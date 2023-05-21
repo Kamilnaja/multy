@@ -20,13 +20,19 @@ const initialState: TodoState["todo"] = {
       id: 2,
       description: "Do dishes",
       priority: "high",
-      isDone: false
+      isDone: true
     },
     {
       id: 3,
       description: "Do homework",
       priority: "high",
       isDone: false
+    },
+    {
+      id: 4,
+      description: "Buy milk",
+      priority: "low",
+      isDone: true
     }
   ]
 }
