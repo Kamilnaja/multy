@@ -1,13 +1,16 @@
+import { MemoryRouter } from "react-router-dom"
 import "~base.css"
 import "~style.css"
 import Menu from "./menu"
-import TodoList from "./todolist"
+import Routing from "./routing"
 
 export default function Todo() {
   return (
-    <div className="flex flex-col p-4">
-      <Menu></Menu>
-      <TodoList></TodoList>
-    </div>
+    <MemoryRouter>
+      <div className="flex flex-col p-4">
+        <Menu></Menu>
+      </div>
+      <Routing></Routing>
+    </MemoryRouter>
   )
 }

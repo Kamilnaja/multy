@@ -14,10 +14,7 @@ export const getStyle = () => {
 }
 
 const PlasmoOverlay = () => {
-  return (
-    <div className="z-50 flex fixed top-32 right-8">
-    </div>
-  )
+  return <div className="z-50 flex fixed top-32 right-8">Lorem</div>
 }
 
 export default PlasmoOverlay
