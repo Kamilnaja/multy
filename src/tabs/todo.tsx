@@ -1,12 +1,11 @@
-export default function DeltaFlyerPage() {
+import "~base.css"
+import "~style.css"
+import Menu from "./menu"
+
+export default function Todo() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 16
-      }}>
-      <h2>Todo</h2>
+    <div className="flex flex-col p-4">
+      <Menu></Menu>
     </div>
   )
 }
