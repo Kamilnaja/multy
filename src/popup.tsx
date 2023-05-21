@@ -7,7 +7,7 @@ export default function IndexPopup() {
       <button
         onClick={() => {
           chrome.tabs.create({
-            url: "./tabs/todo.html"
+            url: "./tabs/app.html"
           })
         }}>
         Open todo page
