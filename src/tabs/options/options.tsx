@@ -1,5 +1,5 @@
 function Options() {
-  return <div>Options</div>
+  return <div>Options 1</div>
 }
 
 export default Options

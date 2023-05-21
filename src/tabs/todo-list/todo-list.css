@@ -1,0 +1,9 @@
+.priority {
+  width: 200px;
+}
+.description {
+  width: calc(50% - 200px);
+}
+.notes {
+  width: calc(50% - 200px);
+}

@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom"
 import NoPage from "./no-page"
-import Options from "./options"
-import Stats from "./stats"
-import Templates from "./templates"
-import TodoList from "./todolist"
+import Options from "./options/options"
+import Stats from "./stats/stats"
+import Templates from "./templates/templates"
+import TodosPage from "./todo-list/todos-page"
 
 function Routing() {
   return (
     <Routes>
-      <Route index element={<TodoList />} />
+      <Route index element={<TodosPage />} />
       <Route path="templates" element={<Templates />} />
       <Route path="stats" element={<Stats />} />
       <Route path="options" element={<Options />} />
