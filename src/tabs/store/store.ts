@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import todoReducer from "../todo-list/todo-list.slice"
+import todoReducer, { type TodoState } from "../todo-list/todo-list.slice"
 
 export default configureStore({
   reducer: {
@@ -7,6 +7,7 @@ export default configureStore({
   }
 })
 
-// export type RootState = ReturnType<typeof configureStore.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-// export type AppDispatch = typeof configureStore.dispatch
+export const todosDoneSelector = (state: TodoState) =>
+  state.todo.todos.filter((todo) => todo.isDone)
+export const todosNotDoneSelector = (state: TodoState) =>
+  state.todo.todos.filter((todo) => !todo.isDone)
