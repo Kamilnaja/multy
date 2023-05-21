@@ -26,7 +26,7 @@ const AddTodo = () => {
       <h2 className="text-xl font-bold mb-4">Add Todo</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex">
-          <div className="flex-grow">
+          <div className="grow-0 pr-2">
             <label htmlFor="priority" className="block mb-1 font-medium">
               Priority
             </label>
