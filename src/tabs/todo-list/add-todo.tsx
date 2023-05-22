@@ -1,14 +1,16 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 import { PRIORITIES } from "./priority"
 
 const AddTodo = () => {
+  const dispatch = useDispatch()
   const [category] = useState("")
   const [priority, setPriority] = useState("")
   const [description, setDescription] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("Form submitted:", category, priority, description)
+    console.log("Form submitted:", priority, description)
   }
 
   const handleKeyDown = (e) => {
