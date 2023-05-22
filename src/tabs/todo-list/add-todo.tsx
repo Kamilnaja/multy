@@ -1,27 +1,37 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { PRIORITIES } from "./priority"
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { PRIORITIES } from "./priority";
+import { addTodo } from "./todo-list.slice";
 
 const AddTodo = () => {
-  const dispatch = useDispatch()
-  const [category] = useState("")
-  const [priority, setPriority] = useState("")
-  const [description, setDescription] = useState("")
+  const dispatch = useDispatch();
+  const [category, setCategory] = useState("");
+  const [priority, setPriority] = useState("A");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Form submitted:", priority, description)
-  }
+    e.preventDefault();
+    dispatch(
+      addTodo({
+        id: Date.now(),
+        priority,
+        description,
+        isDone: false
+      })
+    );
+
+    setDescription("");
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
-      handleSubmit(e)
+      handleSubmit(e);
     }
-  }
+  };
 
   const prioritiesList = PRIORITIES.map((priority) => (
     <option key={priority}>{priority}</option>
-  ))
+  ));
 
   return (
     <div className="p-4">
@@ -55,7 +65,7 @@ const AddTodo = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddTodo
+export default AddTodo;
