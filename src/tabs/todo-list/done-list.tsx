@@ -5,7 +5,7 @@ import Todo from "./todo"
 export default function DoneList() {
   const todos = useSelector(todosDoneSelector)
 
-  const todosList = todos.map((todo) => <Todo todo={todo}></Todo>)
+  const todosList = todos.map((todo) => <Todo todo={todo} key={todo.id}></Todo>)
 
   return (
     <>
