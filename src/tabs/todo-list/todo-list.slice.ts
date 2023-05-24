@@ -2,12 +2,10 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface TodoState {
-  todo: {
-    todos: Todo[];
-  };
+  todos: Todo[];
 }
 
-const initialState: TodoState["todo"] = {
+const initialState: TodoState = {
   todos: [
     {
       id: 1,
