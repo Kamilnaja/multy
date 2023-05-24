@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@plasmohq/redux-persist':
+    specifier: ^6.1.0
+    version: 6.1.0(redux@4.2.1)
   '@plasmohq/storage':
     specifier: ^1.6.0
     version: 1.6.0(react@18.2.0)
@@ -22,6 +25,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.11.2
     version: 6.11.2(react-dom@18.2.0)(react@18.2.0)
+  redux-persist-webextension-storage:
+    specifier: ^1.0.2
+    version: 1.0.2
   tailwindcss:
     specifier: 3.3.2
     version: 3.3.2
@@ -1853,6 +1859,14 @@ packages:
       - velocityjs
       - walrus
       - whiskers
+    dev: false
+
+  /@plasmohq/redux-persist@6.1.0(redux@4.2.1):
+    resolution: {integrity: sha512-12mDmEotgMH/+4g9Hput5DDAIVAnmo8cZGPBsi106i8t/GuySX439XF8gEdEY2sEZaFkminq2smXnMTNysfD+A==}
+    peerDependencies:
+      redux: '>4.0.0'
+    dependencies:
+      redux: 4.2.1
     dev: false
 
   /@plasmohq/storage@1.6.0(react@18.2.0):
@@ -4734,6 +4748,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: false
+
+  /redux-persist-webextension-storage@1.0.2:
+    resolution: {integrity: sha512-WGiK6sNIMLtvZaWqDOZF7Yzz53LOx5YzE9I2bwjZeACtp6+VvfyP57J5czXtTSe9KVSTTPlLmX96jS4agYfwsQ==}
     dev: false
 
   /redux-thunk@2.4.2(redux@4.2.1):
