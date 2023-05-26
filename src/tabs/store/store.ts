@@ -11,9 +11,10 @@ import {
 } from "@plasmohq/redux-persist";
 import type { PersistConfig } from "@plasmohq/redux-persist/lib/types";
 import { Storage } from "@plasmohq/storage";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { localStorage } from "redux-persist-webextension-storage";
-import { todoSlice } from "../todo-list/todo-list.slice";
+import { templateSlice } from "~tabs/templates/templates.slice";
+import { todoSlice } from "~tabs/todo-list/todo-list.slice";
 
 const persistConfig: PersistConfig<any> = {
   key: "root",
@@ -21,14 +22,11 @@ const persistConfig: PersistConfig<any> = {
   storage: localStorage
 };
 
-const combinedReducer = combineReducers({
-  todoSlice: todoSlice.reducer
-});
-
-const persistedReducer = persistReducer(persistConfig, combinedReducer);
-
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    todoSlice: persistReducer(persistConfig, todoSlice.reducer),
+    templateSlice: persistReducer(persistConfig, templateSlice.reducer)
+  },
   devTools: true,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -61,4 +59,8 @@ export const todosDoneSelector = (state) => {
 
 export const todosNotDoneSelector = (state) => {
   return state.todoSlice.todos.filter((todo) => !todo.isDone);
+};
+
+export const templatesSelector = (state) => {
+  return state.templateSlice.templates;
 };
