@@ -17,12 +17,32 @@ const initialState: TemplateState = {
     {
       id: 1,
       title: "Daily Routine",
-      description: "A template for your daily routine",
+      description: "A template for your sadfdas routine",
       todos: [
         {
           id: 1,
           description: "Wake up",
           notes: "Don't forget to set an alarm!",
+          priority: "low",
+          isDone: false
+        },
+        {
+          id: 2,
+          description: "Brush teeth",
+          priority: "high",
+          isDone: true
+        }
+      ]
+    },
+    {
+      id: 2,
+      title: "Weekly Routine",
+      description: "A template for your weekly routine",
+      todos: [
+        {
+          id: 4,
+          description: "Do laundry",
+          notes: "Don't forget to separate colors!",
           priority: "low",
           isDone: false
         }
@@ -46,6 +66,5 @@ export const templateSlice = createSlice({
   }
 });
 
-export const { addTemplate: addTodo, deleteTemplate: deleteTodo } =
-  templateSlice.actions;
+export const { addTemplate, deleteTemplate } = templateSlice.actions;
 export default templateSlice.reducer;

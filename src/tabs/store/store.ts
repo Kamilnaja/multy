@@ -13,7 +13,7 @@ import type { PersistConfig } from "@plasmohq/redux-persist/lib/types";
 import { Storage } from "@plasmohq/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import { localStorage } from "redux-persist-webextension-storage";
-import { templateSlice } from "~tabs/templates/templates.slice";
+import { templateSlice, type Template } from "~tabs/templates/templates.slice";
 import { todoSlice } from "~tabs/todo-list/todo-list.slice";
 
 const persistConfig: PersistConfig<any> = {
@@ -53,14 +53,14 @@ new Storage().watch({
 });
 
 // selectors
-export const todosDoneSelector = (state) => {
-  return state.todoSlice.todos.filter((todo) => todo.isDone);
+export const todosDoneSelector = (state): Todo[] => {
+  return state.todoSlice.todos.filter((todo: Todo) => todo.isDone);
 };
 
-export const todosNotDoneSelector = (state) => {
-  return state.todoSlice.todos.filter((todo) => !todo.isDone);
+export const todosNotDoneSelector = (state): Todo[] => {
+  return state.todoSlice.todos.filter((todo: Todo) => !todo.isDone);
 };
 
-export const templatesSelector = (state) => {
+export const templatesSelector = (state): Template[] => {
   return state.templateSlice.templates;
 };
