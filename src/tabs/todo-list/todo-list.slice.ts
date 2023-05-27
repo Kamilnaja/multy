@@ -6,33 +6,7 @@ export interface TodoState {
 }
 
 const initialState: TodoState = {
-  todos: [
-    {
-      id: 1,
-      description: "Do laundry",
-      notes: "Don't forget to separate colors!",
-      priority: "low",
-      isDone: false
-    },
-    {
-      id: 2,
-      description: "Do dishes",
-      priority: "high",
-      isDone: true
-    },
-    {
-      id: 3,
-      description: "Do homework",
-      priority: "high",
-      isDone: false
-    },
-    {
-      id: 4,
-      description: "Buy milk",
-      priority: "low",
-      isDone: true
-    }
-  ]
+  todos: []
 };
 
 export const todoSlice = createSlice({
@@ -40,7 +14,7 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<Todo>) => {
-      state.todos.push(action.payload);
+      state.todos = [action.payload, ...state.todos];
     },
     deleteTodo: (state, action: PayloadAction<Todo["id"]>) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
