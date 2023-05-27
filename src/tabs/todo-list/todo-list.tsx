@@ -10,9 +10,7 @@ export default function TodoList() {
 
   return (
     <>
-      <div className="text-2xl font-bold mb-4 p-2">
-        Todo: {todosList.length}
-      </div>
+      <div className="text-sm font-bold mb-4 p-2">Todo: {todosList.length}</div>
       <ul>{todosList}</ul>
     </>
   );

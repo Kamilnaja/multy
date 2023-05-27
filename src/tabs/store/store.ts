@@ -15,6 +15,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { localStorage } from "redux-persist-webextension-storage";
 import { templateSlice, type Template } from "~tabs/templates/templates.slice";
 import { todoSlice } from "~tabs/todo-list/todo-list.slice";
+import type { AppSlice } from "./todo-slice.model";
 
 const persistConfig: PersistConfig<any> = {
   key: "root",
@@ -53,14 +54,22 @@ new Storage().watch({
 });
 
 // selectors
-export const todosDoneSelector = (state): Todo[] => {
-  return state.todoSlice.todos.filter((todo: Todo) => todo.isDone);
+export const todosSelector = (state: AppSlice): Todo[] => {
+  return Object.values(state.todoSlice.todos);
 };
 
-export const todosNotDoneSelector = (state): Todo[] => {
-  return state.todoSlice.todos.filter((todo: Todo) => !todo.isDone);
+export const todosDoneSelector = (state: AppSlice): Todo[] => {
+  return Object.values(state.todoSlice.todos).filter(
+    (todo: Todo) => todo.isDone
+  );
 };
 
-export const templatesSelector = (state): Template[] => {
-  return state.templateSlice.templates;
+export const todosNotDoneSelector = (state: AppSlice): Todo[] => {
+  return Object.values(state.todoSlice.todos).filter(
+    (todo: Todo) => !todo.isDone
+  );
+};
+
+export const templatesSelector = (state: AppSlice): Template[] => {
+  return Object.values(state.templateSlice.templates);
 };
