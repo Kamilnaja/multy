@@ -22,14 +22,18 @@ export default function Todo({ todo }: TodoProps) {
       <div className="flex-grow flex-shrink-0">{todo.description}</div>
       {!todo.isDone && (
         <>
-          <div className="cursor-pointer pr-1" onClick={onDeleteClicked}>
+          <button
+            className="cursor-pointer mr-2 bg-yellow-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+            onClick={onDeleteClicked}>
             Delete
-          </div>
+          </button>
         </>
       )}
-      <div className="cursor-pointer" onClick={onDoneClicked}>
+      <button
+        className="cursor-pointer bg-transparent hover:bg-blue-700 text-blue-500 hover:text-white font-bold py-1 px-4 rounded border border-blue-500"
+        onClick={onDoneClicked}>
         {todo.isDone ? "Undone" : "Done"}
-      </div>
+      </button>
     </li>
   );
 }
