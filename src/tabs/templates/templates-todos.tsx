@@ -7,7 +7,7 @@ type TemplatesTodosProps = {
 export default function TemplatesTodos({ template }: TemplatesTodosProps) {
   return (
     <>
-      <div className="flex items-center justify-between mt-4 text-gray-900 dark:text-white mb-2">
+      <div className="flex items-center justify-between mt-4 text-gray-900 mb-2">
         Todos
       </div>
       <ul>
@@ -16,7 +16,7 @@ export default function TemplatesTodos({ template }: TemplatesTodosProps) {
             className="flex border p-4 dark:text-gray-400"
             key={`${todo.id}-${template.id}`}>
             <div>
-              <h3 className="text-base font-bold tracking-tight text-gray-900 dark:text-white">
+              <h3 className="text-base font-bold tracking-tight text-gray-900">
                 {todo.description}
               </h3>
             </div>

@@ -71,7 +71,7 @@ export const templateSlice = createSlice({
     addTemplate: (state: TemplateState, action: PayloadAction<Template>) => {
       state.templates[action.payload.id] = action.payload;
     },
-    deleteTemplate: (state, action: PayloadAction<Todo["id"]>) => {
+    deleteTemplate: (state, action: PayloadAction<Template>) => {
       const { id } = action.payload;
       const templates = { ...state.templates };
       delete templates[id];
