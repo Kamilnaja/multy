@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-import { todosNotDoneSelector } from "~tabs/store/store";
+import SectionDivider from "~tabs/section-divider/section-divider";
+import { todosNotDoneSelector } from "~tabs/store/selectors/todo-selectors";
 import Todo from "./todo";
 
 export default function TodoList() {
@@ -10,9 +11,7 @@ export default function TodoList() {
 
   return (
     <>
-      <div className="text-2xl font-bold mb-4 p-2">
-        Todo: {todosList.length}
-      </div>
+      <SectionDivider title="Todo" count={todosList.length}></SectionDivider>
       <ul>{todosList}</ul>
     </>
   );

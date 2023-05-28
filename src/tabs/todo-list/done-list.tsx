@@ -1,18 +1,19 @@
-import { useSelector } from "react-redux"
-import { todosDoneSelector } from "~tabs/store/store"
-import Todo from "./todo"
+import { useSelector } from "react-redux";
+import { todosDoneSelector } from "~tabs/store/selectors/todo-selectors";
+import SectionDivider from "./../section-divider/section-divider";
+import Todo from "./todo";
 
 export default function DoneList() {
-  const todos = useSelector(todosDoneSelector)
+  const todos = useSelector(todosDoneSelector);
 
-  const todosList = todos.map((todo) => <Todo todo={todo} key={todo.id}></Todo>)
+  const todosList = todos.map((todo) => (
+    <Todo todo={todo} key={todo.id}></Todo>
+  ));
 
   return (
     <>
-      <div className="text-2xl font-bold mb-4 p-2">
-        Done: {todosList.length}
-      </div>
+      <SectionDivider title="Done" count={todosList.length} />
       <ul>{todosList}</ul>
     </>
-  )
+  );
 }

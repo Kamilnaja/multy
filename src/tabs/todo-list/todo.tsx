@@ -9,11 +9,11 @@ export default function Todo({ todo }: TodoProps) {
   const dispatch = useDispatch();
 
   const onDeleteClicked = () => {
-    dispatch(deleteTodo(todo.id));
+    dispatch(deleteTodo(todo));
   };
 
   const onDoneClicked = () => {
-    dispatch(toggleTodo(todo.id));
+    dispatch(toggleTodo(todo));
   };
 
   return (
