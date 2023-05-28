@@ -4,4 +4,5 @@ interface Todo {
   notes?: string;
   priority: string;
   isDone: boolean;
+  groupId?: number;
 }

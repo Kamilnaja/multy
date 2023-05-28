@@ -11,13 +11,16 @@ export default function TemplatesBtns({ todos }: TemplateBtnsProps) {
   const dispatch = useDispatch();
 
   const handleAddToTodos = (): void => {
+    const groupId = uuidv4();
+
     Object.values(todos).forEach((todo) => {
       dispatch(
         addTodo({
           description: todo.description,
           priority: todo.priority,
           isDone: false,
-          id: uuidv4()
+          id: uuidv4(),
+          groupId: groupId
         })
       );
     });
