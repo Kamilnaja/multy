@@ -13,9 +13,8 @@ import type { PersistConfig } from "@plasmohq/redux-persist/lib/types";
 import { Storage } from "@plasmohq/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import { localStorage } from "redux-persist-webextension-storage";
-import { templateSlice, type Template } from "~tabs/templates/templates.slice";
+import { templateSlice } from "~tabs/templates/templates.slice";
 import { todoSlice } from "~tabs/todo-list/todo-list.slice";
-import type { AppSlice } from "./todo-slice.model";
 
 const persistConfig: PersistConfig<any> = {
   key: "root",
@@ -52,24 +51,3 @@ new Storage().watch({
     persistor.resync();
   }
 });
-
-// selectors
-export const todosSelector = (state: AppSlice): Todo[] => {
-  return Object.values(state.todoSlice.todos);
-};
-
-export const todosDoneSelector = (state: AppSlice): Todo[] => {
-  return Object.values(state.todoSlice.todos).filter(
-    (todo: Todo) => todo.isDone
-  );
-};
-
-export const todosNotDoneSelector = (state: AppSlice): Todo[] => {
-  return Object.values(state.todoSlice.todos).filter(
-    (todo: Todo) => !todo.isDone
-  );
-};
-
-export const templatesSelector = (state: AppSlice): Template[] => {
-  return Object.values(state.templateSlice.templates);
-};

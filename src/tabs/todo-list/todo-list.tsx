@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import SectionDivider from "~tabs/section-divider/section-divider";
-import { todosNotDoneSelector } from "~tabs/store/store";
+import { todosNotDoneSelector } from "~tabs/store/selectors/todo-selectors";
 import Todo from "./todo";
 
 export default function TodoList() {
