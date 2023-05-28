@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import SectionDivider from "~tabs/section-divider/section-divider";
 import { templatesSelector } from "~tabs/store/selectors/template-selector";
@@ -7,22 +7,36 @@ import { type Template } from "./templates.slice";
 
 function Templates() {
   const templates = useSelector(templatesSelector);
-  const [isOpen, setIsOpen] = useState({ id: -1, opened: false });
+  const [open, setOpen] = useState({ id: -1, isOpened: false });
+  const menuRef = useRef(null);
 
   const toggleMenu = (id: number) => {
-    if (isOpen.id === id) {
-      setIsOpen({ id, opened: !isOpen.opened });
+    if (open.id === id) {
+      setOpen({ id, isOpened: !open.isOpened });
       return;
     }
-    setIsOpen({ id, opened: true });
+    setOpen({ id, isOpened: true });
   };
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setOpen({ id: -1, isOpened: false });
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const templatesList = templates.map((template: Template) => (
     <li
       key={template.id}
       className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-2 ml-2">
-      <div>
-        <div className="flex justify-end pt-2 relative">
+      <div ref={menuRef} className="relative">
+        <div className="flex justify-end pt-2 absolute right-0">
           <button
             id="dropdownButton"
             data-dropdown-toggle="dropdown"
@@ -39,7 +53,7 @@ function Templates() {
               <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
             </svg>
           </button>
-          {isOpen.id === template.id && isOpen.opened && (
+          {open.id === template.id && open.isOpened && (
             <div
               id="dropdown"
               className="z-10 absolute text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 top-0 right-10">
