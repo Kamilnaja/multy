@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 import { PRIORITIES } from "./priority";
 import { addTodo } from "./todo-list.slice";
 
 const AddTodo = () => {
   const dispatch = useDispatch();
-  const [category, setCategory] = useState("");
   const [priority, setPriority] = useState("A");
   const [description, setDescription] = useState("");
 
@@ -13,7 +13,7 @@ const AddTodo = () => {
     e.preventDefault();
     dispatch(
       addTodo({
-        id: Date.now(),
+        id: uuidv4(),
         priority,
         description,
         isDone: false
