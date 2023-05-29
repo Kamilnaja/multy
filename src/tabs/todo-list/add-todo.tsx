@@ -16,7 +16,8 @@ const AddTodo = () => {
         id: uuidv4(),
         priority,
         description,
-        isDone: false
+        isDone: false,
+        dateChanged: new Date().getDate()
       })
     );
 

@@ -17,7 +17,8 @@ export default function TemplatesBtns({ todos }: TemplateBtnsProps) {
           description: todo.description,
           priority: todo.priority,
           isDone: false,
-          id: uuidv4()
+          id: uuidv4(),
+          dateChanged: new Date().getTime()
         })
       );
     });
