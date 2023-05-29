@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, toggleTodo } from "./todo-list.slice";
+import { deleteTodo, editTodo, toggleTodo } from "./todo-list.slice";
 
 interface TodoProps {
   todo: Todo;
 }
 
 export default function Todo({ todo }: TodoProps) {
+  const [content, setContent] = useState(todo.description);
+
   const dispatch = useDispatch();
 
   const onDeleteClicked = () => {
@@ -16,10 +19,42 @@ export default function Todo({ todo }: TodoProps) {
     dispatch(toggleTodo(todo));
   };
 
+  const onContentChangeFinish = (e: any) => {
+    const todo: Todo = {
+      description: content,
+      dateChanged: new Date().getTime(),
+      id: e.target.dataset.id,
+      isDone: false,
+      priority: e.target.dataset.priority
+    };
+    dispatch(editTodo(todo));
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      onContentChangeFinish(e);
+    }
+  };
+
   return (
-    <li className="flex border p-4" key={todo.id}>
-      <div className="flex-grow grow-0 pr-2 flex-shrink-0">{todo.priority}</div>
-      <div className="flex-grow flex-shrink-0">{todo.description}</div>
+    <li
+      className="flex flex-nowrap border p-2 items-center"
+      key={todo.id}
+      draggable>
+      <span className="flex-grow grow-0 pr-2 flex-shrink-0">
+        {todo.priority}
+      </span>
+      <input
+        className="flex-grow flex-shrink-0"
+        onChange={(e) => setContent(e.target.value)}
+        onBlur={(e) => onContentChangeFinish(e)}
+        value={content}
+        onKeyDown={handleKeyDown}
+        type="text"
+        data-id={todo.id}
+        data-priority={todo.priority}
+      />
+
       {!todo.isDone && (
         <>
           <button

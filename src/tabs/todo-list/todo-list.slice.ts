@@ -3,15 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { TodoState } from "~tabs/store/todo-slice.model";
 
 const initialState: TodoState = {
-  todos: {
-    1: {
-      id: 1,
-      description: "Learn React",
-      notes: "Learn React Hooks and Redux",
-      priority: "High",
-      isDone: false
-    }
-  }
+  todos: {}
 };
 
 export const todoSlice = createSlice({
@@ -28,6 +20,8 @@ export const todoSlice = createSlice({
         todo.notes = action.payload.notes;
         todo.priority = action.payload.priority;
       }
+      const todos = { ...state.todos };
+      state.todos = todos;
     },
     deleteTodo: (state: TodoState, action: PayloadAction<Todo>) => {
       const { id } = action.payload;
