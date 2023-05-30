@@ -1,4 +1,4 @@
-import type { Template } from "./templates.slice";
+import type { Template } from "./store/templates.slice";
 
 type TemplatesTodosProps = {
   template: Template;

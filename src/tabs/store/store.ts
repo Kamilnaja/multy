@@ -13,8 +13,8 @@ import type { PersistConfig } from "@plasmohq/redux-persist/lib/types";
 import { Storage } from "@plasmohq/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import { localStorage } from "redux-persist-webextension-storage";
-import { templateSlice } from "~tabs/templates/templates.slice";
-import { todoSlice } from "~tabs/todo-list/todo-list.slice";
+import { templateSlice } from "~tabs/templates/store/templates.slice";
+import { todoSlice } from "~tabs/todo-list/store/todo-list.slice";
 
 const persistConfig: PersistConfig<any> = {
   key: "root",
