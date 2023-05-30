@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addTodo } from "~tabs/todo-list/todo-list.slice";
-import type { Template } from "./templates.slice";
+import { addTodo } from "~tabs/todo-list/store/todo-list.slice";
+import type { Template } from "./store/templates.slice";
 
 type TemplateBtnsProps = {
   todos: Template["todos"];

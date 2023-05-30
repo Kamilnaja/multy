@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, editTodo, toggleTodo } from "./todo-list.slice";
+import { deleteTodo, editTodo, toggleTodo } from "./store/todo-list.slice";
 
 interface TodoProps {
   todo: Todo;

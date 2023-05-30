@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import SectionDivider from "~tabs/section-divider/section-divider";
-import { templatesSelector } from "~tabs/store/selectors/template-selector";
+import { templatesSelector } from "~tabs/templates/store/template-selector";
+import { type Template } from "./store/templates.slice";
 import TemplatesBtns from "./templates-btns";
 import TemplatesTodos from "./templates-todos";
-import { type Template } from "./templates.slice";
 
 function TemplatesPage() {
   const templates = useSelector(templatesSelector);
