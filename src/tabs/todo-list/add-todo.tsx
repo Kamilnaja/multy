@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { PRIORITIES } from "./priority";
-import { addTodo } from "./todo-list.slice";
+import { addTodo } from "./store/todo-list.slice";
 
 const AddTodo = () => {
   const dispatch = useDispatch();

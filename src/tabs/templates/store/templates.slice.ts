@@ -1,7 +1,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import type { TemplateState } from "~tabs/store/template-slice.model";
-import type { TodoState } from "~tabs/store/todo-slice.model";
+import type { TemplateState } from "~tabs/templates/store/template-slice.model";
+import type { TodoState } from "~tabs/todo-list/store/todo-state.model";
 
 export interface Template {
   id: number;
@@ -22,14 +22,16 @@ const initialState: TemplateState = {
           description: "Learn React",
           notes: "Learn React Hooks and Redux",
           priority: "High",
-          isDone: false
+          isDone: false,
+          dateChanged: 0
         },
         2: {
           id: 2,
           description: "Learn React Router",
           notes: "Learn React Router",
           priority: "High",
-          isDone: false
+          isDone: false,
+          dateChanged: 0
         }
       }
     },
@@ -43,21 +45,24 @@ const initialState: TemplateState = {
           description: "Learn Redux",
           notes: "Learn Redux",
           priority: "High",
-          isDone: false
+          isDone: false,
+          dateChanged: 0
         },
         2: {
           id: 2,
           description: "Learn Redux Toolkit",
           notes: "Learn Redux Toolkit",
           priority: "High",
-          isDone: false
+          isDone: false,
+          dateChanged: 0
         },
         3: {
           id: 3,
           description: "Learn Redux Thunk",
           notes: "Learn Redux Thunk",
           priority: "High",
-          isDone: false
+          isDone: false,
+          dateChanged: 0
         }
       }
     }

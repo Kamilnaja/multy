@@ -1,4 +1,4 @@
-import type { AppSlice } from "../app-slice.model";
+import type { AppSlice } from "../../store/app-slice.model";
 
 export const todosSelector = (state: AppSlice): Todo[] => {
   return Object.values(state.todoSlice.todos).sort(
