@@ -7,7 +7,7 @@ import Menu from "./menu";
 import Routing from "./routing";
 import { persistor, store } from "./store/store";
 
-export default function Todo() {
+export default function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
