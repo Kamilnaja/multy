@@ -1,5 +1,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 import type { TemplateState } from "~tabs/templates/store/template-slice.model";
 import type { TodoState } from "~tabs/todo-list/store/todo-state.model";
 
@@ -18,7 +19,7 @@ const initialState: TemplateState = {
       description: "Learn React",
       todos: {
         1: {
-          id: 1,
+          id: uuidv4(),
           description: "Learn React",
           notes: "Learn React Hooks and Redux",
           priority: "High",
@@ -26,7 +27,7 @@ const initialState: TemplateState = {
           dateChanged: 0
         },
         2: {
-          id: 2,
+          id: uuidv4(),
           description: "Learn React Router",
           notes: "Learn React Router",
           priority: "High",
@@ -41,7 +42,7 @@ const initialState: TemplateState = {
       description: "Learn Redux",
       todos: {
         1: {
-          id: 1,
+          id: uuidv4(),
           description: "Learn Redux",
           notes: "Learn Redux",
           priority: "High",
@@ -49,7 +50,7 @@ const initialState: TemplateState = {
           dateChanged: 0
         },
         2: {
-          id: 2,
+          id: uuidv4(),
           description: "Learn Redux Toolkit",
           notes: "Learn Redux Toolkit",
           priority: "High",
@@ -57,7 +58,7 @@ const initialState: TemplateState = {
           dateChanged: 0
         },
         3: {
-          id: 3,
+          id: uuidv4(),
           description: "Learn Redux Thunk",
           notes: "Learn Redux Thunk",
           priority: "High",
