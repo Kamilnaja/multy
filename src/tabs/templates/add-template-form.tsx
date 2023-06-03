@@ -1,16 +1,17 @@
 import { useState } from "react";
+import Todo from "~tabs/todo-list/todo";
 
 interface Template {
   name: string;
   description: string;
-  tasks: string[];
+  todos: Todo[];
 }
 
-const AddTemplateForm = (props: any) => {
+const AddTemplateForm = () => {
   const [template, setTemplate] = useState<Template>({
     name: "",
     description: "",
-    tasks: []
+    todos: []
   });
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -25,19 +26,19 @@ const AddTemplateForm = (props: any) => {
     setTemplate((prevTemplate) => ({ ...prevTemplate, [name]: value }));
   }
 
-  function handleTaskChange(
-    index: number,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) {
-    const newTasks = [...template.tasks];
-    newTasks[index] = event.target.value;
-    setTemplate((prevTemplate) => ({ ...prevTemplate, tasks: newTasks }));
-  }
+  // function handleTaskChange(
+  //   index: number,
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) {
+  //   const newTasks = [...template.todos];
+  //   newTasks[index] = event.target.value;
+  //   setTemplate((prevTemplate) => ({ ...prevTemplate, todos: newTasks }));
+  // }
 
   function handleAddTask() {
     setTemplate((prevTemplate) => ({
       ...prevTemplate,
-      tasks: [...prevTemplate.tasks, ""]
+      todos: [...prevTemplate.todos, null]
     }));
   }
 
@@ -70,16 +71,10 @@ const AddTemplateForm = (props: any) => {
         <label htmlFor="tasks" className="block mb-2">
           Tasks:
         </label>
-        {template.tasks.map((task, index) => (
-          <>
-            <input
-              key={index}
-              type="text"
-              value={task}
-              onChange={(event) => handleTaskChange(index, event)}
-              className="w-full border border-gray-300 rounded-md py-2 px-3 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </>
+        {template.todos.map((todo, index) => (
+          <div key={index}>
+            <Todo></Todo>
+          </div>
         ))}
         <button
           type="button"
@@ -99,7 +94,6 @@ const AddTemplateForm = (props: any) => {
           Add Task
         </button>
       </div>
-
       <button
         type="submit"
         className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
