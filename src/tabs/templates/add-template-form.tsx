@@ -1,17 +1,13 @@
 import { useState } from "react";
 import Todo from "~tabs/todo-list/todo";
-
-interface Template {
-  name: string;
-  description: string;
-  todos: Todo[];
-}
+import type { Template } from "./store/templates.slice";
 
 const AddTemplateForm = () => {
   const [template, setTemplate] = useState<Template>({
-    name: "",
+    id: null,
+    title: "",
     description: "",
-    todos: []
+    todos: {}
   });
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -38,7 +34,7 @@ const AddTemplateForm = () => {
   function handleAddTask() {
     setTemplate((prevTemplate) => ({
       ...prevTemplate,
-      todos: [...prevTemplate.todos, null]
+      todos: prevTemplate.todos
     }));
   }
 
@@ -51,7 +47,7 @@ const AddTemplateForm = () => {
         type="text"
         id="name"
         name="name"
-        value={template.name}
+        value={template.title}
         onChange={handleChange}
         className="w-full border border-gray-300 rounded-md py-2 px-3 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
@@ -71,7 +67,7 @@ const AddTemplateForm = () => {
         <label htmlFor="tasks" className="block mb-2">
           Tasks:
         </label>
-        {template.todos.map((todo, index) => (
+        {Object.values(template.todos).map((todo, index) => (
           <div key={index}>
             <Todo></Todo>
           </div>

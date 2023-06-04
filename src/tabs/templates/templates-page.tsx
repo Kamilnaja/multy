@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import SectionDivider from "~tabs/shared/section-divider/section-divider";
-import { templatesSelector } from "~tabs/templates/store/template-selector";
+import { templatesSelector } from "~tabs/templates/store/template-selectors";
 import { type Template } from "./store/templates.slice";
 import TemplateDialog from "./template-dialog";
 import TemplatesBtns from "./templates-btns";

@@ -11,17 +11,21 @@ export default function TemplatesTodos({ template }: TemplatesTodosProps) {
         Todos
       </div>
       <ul>
-        {Object.values(template.todos).map((todo) => (
-          <li
-            className="flex border p-4 dark:text-gray-400"
-            key={`${todo.id}-${template.id}`}>
-            <div>
-              <h3 className="text-base font-bold tracking-tight text-gray-900">
-                {todo.description}
-              </h3>
-            </div>
-          </li>
-        ))}
+        {Object.values(template.todos).length && (
+          <>
+            {Object.values(template.todos).map((todo) => (
+              <li
+                className="flex border p-4 dark:text-gray-400"
+                key={`${todo?.id}-${template?.id}`}>
+                <div>
+                  <h3 className="text-base font-bold tracking-tight text-gray-900">
+                    {todo?.description}
+                  </h3>
+                </div>
+              </li>
+            ))}
+          </>
+        )}
       </ul>
     </>
   );
