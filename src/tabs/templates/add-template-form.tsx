@@ -1,14 +1,13 @@
 import { useState } from "react";
+import type { Template } from "./store/templates.slice";
 
-interface Template {
-  name: string;
-  description: string;
-}
 
 const AddTemplateForm = () => {
   const [template, setTemplate] = useState<Template>({
-    name: "",
-    description: ""
+    name  : "",
+    description: "",
+    todos: {},
+    id: new Date().getTime(),
   });
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {

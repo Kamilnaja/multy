@@ -5,7 +5,7 @@ import type { TodoState } from "~tabs/todo-list/store/todo-state.model";
 
 export interface Template {
   id: number;
-  title: string;
+  name: string;
   description: string;
   todos: TodoState["todos"];
 }
@@ -14,7 +14,7 @@ const initialState: TemplateState = {
   templates: {
     1: {
       id: 1,
-      title: "React",
+      name: "React",
       description: "Learn React",
       todos: {
         1: {
@@ -37,7 +37,7 @@ const initialState: TemplateState = {
     },
     2: {
       id: 2,
-      title: "Redux",
+      name: "Redux",
       description: "Learn Redux",
       todos: {
         1: {
