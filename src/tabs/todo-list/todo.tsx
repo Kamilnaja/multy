@@ -32,7 +32,9 @@ export default function Todo({ todo }: TodoProps) {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
+      console.log("wchodzi");
       onContentChangeFinish(e);
+      e.target.blur();
     }
   };
 

@@ -16,14 +16,12 @@ function TemplatesPage() {
       key={template.id}
       className="max-w-sm p-6 border border-gray-200 rounded-lg mb-2 ml-2">
       <div className="relative">
-        <TemplatesBtns todos={template.todos}></TemplatesBtns>
+        <TemplatesBtns template={template}></TemplatesBtns>
         <div>
           <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-800">
-            {template.title} {template.id}
+            {template.name}
           </h3>
-          <span className="mb-3 font-normal text-gray-700">
-            {template.description}
-          </span>
+          <p className="">{template.description}</p>
         </div>
         <TemplatesTodos template={template}></TemplatesTodos>
       </div>
@@ -40,6 +38,9 @@ function TemplatesPage() {
           }}>
           Add new template
         </button>
+      </div>
+      <div className="flex justify-center">
+        {templates.length === 0 && <div>No templates, add some</div>}
       </div>
       <SectionDivider
         title="Templates"
