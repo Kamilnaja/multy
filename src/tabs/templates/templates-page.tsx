@@ -39,6 +39,9 @@ function TemplatesPage() {
           Add new template
         </button>
       </div>
+      <div className="flex justify-center">
+        {templates.length === 0 && <div>No templates, add some</div>}
+      </div>
       <SectionDivider
         title="Templates"
         count={templates.length}></SectionDivider>
