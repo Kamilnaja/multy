@@ -63,7 +63,7 @@ const AddTemplateForm = () => {
           <input
             name="description"
             placeholder="task description"
-            value={inputField.description}
+            value={inputField?.description}
             onChange={(event) => handleFormChange(index, event)}
           />
         </div>
