@@ -4,7 +4,7 @@ import type { TemplateState } from "~tabs/templates/store/template-slice.model";
 import type { TodoState } from "~tabs/todo-list/store/todo-state.model";
 
 export interface Template {
-  id: number;
+  id: string;
   name: string;
   description: string;
   todos: TodoState["todos"];
@@ -13,12 +13,12 @@ export interface Template {
 const initialState: TemplateState = {
   templates: {
     1: {
-      id: 1,
+      id: "1",
       name: "React",
       description: "Learn React",
       todos: {
         1: {
-          id: 1,
+          id: "1",
           description: "Learn React",
           notes: "Learn React Hooks and Redux",
           priority: "High",
@@ -26,7 +26,7 @@ const initialState: TemplateState = {
           dateChanged: 0
         },
         2: {
-          id: 2,
+          id: "2",
           description: "Learn React Router",
           notes: "Learn React Router",
           priority: "High",
@@ -36,12 +36,12 @@ const initialState: TemplateState = {
       }
     },
     2: {
-      id: 2,
+      id: "10",
       name: "Redux",
       description: "Learn Redux",
       todos: {
         1: {
-          id: 1,
+          id: "1",
           description: "Learn Redux",
           notes: "Learn Redux",
           priority: "High",
@@ -49,7 +49,7 @@ const initialState: TemplateState = {
           dateChanged: 0
         },
         2: {
-          id: 2,
+          id: "2",
           description: "Learn Redux Toolkit",
           notes: "Learn Redux Toolkit",
           priority: "High",
@@ -57,7 +57,7 @@ const initialState: TemplateState = {
           dateChanged: 0
         },
         3: {
-          id: 3,
+          id: "3",
           description: "Learn Redux Thunk",
           notes: "Learn Redux Thunk",
           priority: "High",

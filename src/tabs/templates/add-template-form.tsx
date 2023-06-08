@@ -1,7 +1,10 @@
 import { useState } from "react";
-import type { Template } from "./store/templates.slice";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import { addTemplate, type Template } from "./store/templates.slice";
 
 const AddTemplateForm = () => {
+  const dispatch = useDispatch();
   const [inputFields, setInputFields] = useState([
     {
       description: ""
@@ -11,7 +14,7 @@ const AddTemplateForm = () => {
     name: "",
     description: "",
     todos: {},
-    id: new Date().getTime()
+    id: uuidv4()
   });
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -26,16 +29,26 @@ const AddTemplateForm = () => {
     setTemplate((prevTemplate) => ({ ...prevTemplate, [name]: value }));
   }
 
-  const handleFormChange = (index, event) => {
+  const handleFormChange = (
+    index: number,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const values = [...inputFields];
     values[index][event.target.name] = event.target.value;
     setInputFields(values);
   };
 
-  const handleAddFields = () => {};
+  const handleAddFields = () => {
+    setInputFields([...inputFields, { description: "" }]);
+  };
+
+  const handleAddTemplate = () => {
+    dispatch(addTemplate(template));
+  };
 
   return (
     <form onSubmit={handleSubmit} className="mx-auto">
+      {JSON.stringify(inputFields)}
       <label htmlFor="name" className="block mb-2">
         Name:
       </label>
@@ -63,18 +76,22 @@ const AddTemplateForm = () => {
           <input
             name="description"
             placeholder="task description"
-            value={inputField?.description}
+            value={inputField.description}
             onChange={(event) => handleFormChange(index, event)}
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
       ))}
-      <input />
-      <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+      <button
+        type="button"
+        onClick={handleAddFields}
+        className="bg-blue-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-blue-600">
         Add Task
       </button>
       <button
         type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+        onClick={handleAddTemplate}>
         Add Template
       </button>
     </form>

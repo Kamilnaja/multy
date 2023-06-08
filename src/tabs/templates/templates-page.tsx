@@ -16,11 +16,12 @@ function TemplatesPage() {
       key={template.id}
       className="max-w-sm p-6 border border-gray-200 rounded-lg mb-2 ml-2">
       <div className="relative">
-        <TemplatesBtns todos={template.todos}></TemplatesBtns>
+        <TemplatesBtns template={template}></TemplatesBtns>
         <div>
           <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-800">
-            {template.description} {template.id}
+            {template.name}
           </h3>
+          <p className="">{template.description}</p>
         </div>
         <TemplatesTodos template={template}></TemplatesTodos>
       </div>
