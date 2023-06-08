@@ -19,11 +19,8 @@ function TemplatesPage() {
         <TemplatesBtns todos={template.todos}></TemplatesBtns>
         <div>
           <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-800">
-            {template.title} {template.id}
+            {template.description} {template.id}
           </h3>
-          <span className="mb-3 font-normal text-gray-700">
-            {template.description}
-          </span>
         </div>
         <TemplatesTodos template={template}></TemplatesTodos>
       </div>
