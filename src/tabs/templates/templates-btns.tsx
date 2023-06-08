@@ -1,17 +1,21 @@
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "~tabs/todo-list/store/todo-list.slice";
-import type { Template } from "./store/templates.slice";
+import { deleteTemplate, type Template } from "./store/templates.slice";
 
 type TemplateBtnsProps = {
-  todos: Template["todos"];
+  template: Template;
 };
 
-export default function TemplatesBtns({ todos }: TemplateBtnsProps) {
+export default function TemplatesBtns({ template }: TemplateBtnsProps) {
   const dispatch = useDispatch();
 
+  const handleDelete = (): void => {
+    dispatch(deleteTemplate(template));
+  };
+
   const handleAddToTodos = (): void => {
-    Object.values(todos).forEach((todo) => {
+    Object.values(template.todos).forEach((todo) => {
       dispatch(
         addTodo({
           description: todo.description,
@@ -30,7 +34,9 @@ export default function TemplatesBtns({ todos }: TemplateBtnsProps) {
         Add to todos
       </button>
       <button className="pr-2">Edit</button>
-      <button className="">Archive</button>
+      <button className="" onClick={handleDelete}>
+        Delete
+      </button>
     </div>
   );
 }
