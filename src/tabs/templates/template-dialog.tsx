@@ -1,6 +1,10 @@
 import AddTemplateForm from "./add-template-form";
 
-const TemplateDialog = ({ setOpenModal }) => {
+export interface TemplateDialogProps {
+  setOpenModal: (openModal: boolean) => void;
+}
+
+const TemplateDialog = ({ setOpenModal }: TemplateDialogProps) => {
   return (
     <>
       <div className="fixed inset-0 z-10 overflow-y-auto">

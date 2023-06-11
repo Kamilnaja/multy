@@ -5,9 +5,13 @@ import { deleteTemplate, type Template } from "./store/templates.slice";
 
 type TemplateBtnsProps = {
   template: Template;
+  setShowModal: (showModal: boolean, template: Template) => void;
 };
 
-export default function TemplatesBtns({ template }: TemplateBtnsProps) {
+export default function TemplatesBtns({
+  template,
+  setShowModal
+}: TemplateBtnsProps) {
   const dispatch = useDispatch();
 
   const handleDelete = (): void => {
@@ -33,7 +37,13 @@ export default function TemplatesBtns({ template }: TemplateBtnsProps) {
       <button className="pr-2" onClick={handleAddToTodos}>
         Add to todos
       </button>
-      <button className="pr-2">Edit</button>
+      <button
+        className="pr-2"
+        onClick={() => {
+          setShowModal(true, template);
+        }}>
+        Edit template
+      </button>
       <button className="" onClick={handleDelete}>
         Delete
       </button>

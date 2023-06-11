@@ -71,7 +71,6 @@ const AddTemplateForm = () => {
 
   return (
     <div className="mx-auto">
-      {JSON.stringify(inputFields)}
       <label htmlFor="name" className="block mb-2">
         Name:
       </label>
