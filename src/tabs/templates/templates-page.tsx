@@ -23,7 +23,7 @@ function TemplatesPage() {
           <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-800">
             {template.name}
           </h3>
-          <p className="">{template.description}</p>
+          <p>{template.description}</p>
         </div>
         <TemplatesTodos template={template}></TemplatesTodos>
       </div>
@@ -49,7 +49,9 @@ function TemplatesPage() {
         count={templates.length}></SectionDivider>
       <ul>{templatesList}</ul>
       {showModal && (
-        <TemplateDialog setOpenModal={setShowModal}></TemplateDialog>
+        <TemplateDialog
+          setOpenModal={setShowModal}
+          data={null}></TemplateDialog>
       )}
     </>
   );

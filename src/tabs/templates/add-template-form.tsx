@@ -81,6 +81,7 @@ const AddTemplateForm = () => {
         value={template.name}
         onChange={handleChange}
         className="w-full border border-gray-300 rounded-md py-2 px-3 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        autoComplete="off"
       />
 
       <label htmlFor="description" className="block mb-2">
@@ -102,6 +103,7 @@ const AddTemplateForm = () => {
             onChange={(event) => handleFormChange(index, event)}
             onKeyDown={handleKeyDown}
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            autoComplete="off"
           />
         </div>
       ))}
