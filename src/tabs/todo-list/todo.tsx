@@ -71,6 +71,7 @@ export default function Todo({ todo }: TodoProps) {
         onClick={onDoneClicked}>
         {todo.isDone ? "Undone" : "Done"}
       </button>
+      <span>{todo.dateFinished}</span>
     </li>
   );
 }

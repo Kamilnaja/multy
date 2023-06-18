@@ -32,6 +32,7 @@ export const todoSlice = createSlice({
     toggleTodo: (state: TodoState, action: PayloadAction<Todo>) => {
       const todo = state.todos[action.payload.id];
       if (todo) {
+        todo.dateFinished = new Date().getTime();
         todo.isDone = !todo.isDone;
       }
     }

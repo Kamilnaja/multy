@@ -5,4 +5,5 @@ interface Todo {
   priority: string;
   isDone: boolean;
   dateChanged: number;
+  dateFinished?: number;
 }
