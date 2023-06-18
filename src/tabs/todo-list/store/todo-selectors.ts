@@ -13,3 +13,10 @@ export const todosDoneSelector = (state: AppSlice): Todo[] => {
 export const todosNotDoneSelector = (state: AppSlice): Todo[] => {
   return todosSelector(state).filter((todo: Todo) => !todo.isDone);
 };
+
+export const todosDoneToday = (state: AppSlice): Todo[] => {
+  const today = new Date().toDateString();
+  return todosDoneSelector(state).filter(
+    (todo) => today === new Date(todo.dateFinished).toDateString()
+  );
+};
