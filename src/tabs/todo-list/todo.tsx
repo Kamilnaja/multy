@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { useDispatch } from "react-redux";
+import { Select } from "./select";
 import { deleteTodo, editTodo, toggleTodo } from "./store/todo-list.slice";
 
 interface TodoProps {
@@ -7,7 +8,7 @@ interface TodoProps {
 }
 
 export default function Todo({ todo }: TodoProps) {
-  const [content, setContent] = useState(todo.description);
+  const [newTodo, setTodo] = useState(todo);
 
   const dispatch = useDispatch();
 
@@ -19,23 +20,28 @@ export default function Todo({ todo }: TodoProps) {
     dispatch(toggleTodo(todo));
   };
 
-  const onContentChangeFinish = (e: any) => {
-    const todo: Todo = {
-      description: content,
-      dateChanged: new Date().getTime(),
-      id: e.target.dataset.id,
-      isDone: false,
-      priority: e.target.dataset.priority
-    };
+  const dispatchChange = (todo: Todo) => {
     dispatch(editTodo(todo));
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      console.log("wchodzi");
-      onContentChangeFinish(e);
-      e.target.blur();
+
+  const handlePriorityChange = (selectedPriority: Todo['priority']) => {
+    const todo = {
+      ...newTodo,
+      priority: selectedPriority
     }
+    setTodo(todo)
+    dispatchChange(todo);
+  };
+
+
+  const setContent = (description: Todo['description']) => {
+    const todo = {
+      ...newTodo,
+      description
+    }
+    setTodo(todo)
+    dispatchChange(todo);
   };
 
   return (
@@ -44,19 +50,14 @@ export default function Todo({ todo }: TodoProps) {
       key={todo.id}
       draggable>
       <span className="flex-grow grow-0 pr-2 flex-shrink-0">
-        {todo.priority}
+        <Select priority={newTodo.priority} setPriority={handlePriorityChange}></Select>
       </span>
       <input
-        className="flex-grow flex-shrink-0"
+        className="flex-grow flex-shrink-0 pt-2 pb-2 pl-2 mr-4"
         onChange={(e) => setContent(e.target.value)}
-        onBlur={(e) => onContentChangeFinish(e)}
-        value={content}
-        onKeyDown={handleKeyDown}
+        value={newTodo.description}
         type="text"
-        data-id={todo.id}
-        data-priority={todo.priority}
       />
-
       {!todo.isDone && (
         <>
           <button

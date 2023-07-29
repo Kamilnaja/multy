@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import type { TodoState } from "~tabs/todo-list/store/todo-state.model";
 import { addTemplate, type Template } from "./store/templates.slice";
 
 const AddTemplateForm = () => {
@@ -22,15 +23,6 @@ const AddTemplateForm = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.target;
-    const todos: Todo[] = inputFields.map((inputField) => ({
-      description: inputField.description,
-      priority: "A",
-      isDone: false,
-      id: uuidv4(),
-      dateChanged: new Date().getTime()
-    }));
-
-    console.log(todos);
 
     setTemplate((prevTemplate) => ({ ...prevTemplate, [name]: value }));
   };
@@ -45,6 +37,25 @@ const AddTemplateForm = () => {
   };
 
   const handleAddTemplate = () => {
+    const todos: TodoState["todos"] = inputFields.reduce((result, item) => {
+      const id = uuidv4();
+
+      if (item.description.trim() !== "") {
+        result[id] = {
+          id,
+          description: item.description.trim(),
+          notes: "",
+          priority: "High",
+          isDone: false,
+          dateChanged: new Date().toISOString()
+        };
+      }
+
+      return result;
+    }, {});
+
+    template.todos = todos;
+
     dispatch(addTemplate(template));
   };
 
