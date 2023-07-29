@@ -19,6 +19,8 @@ export const todoSlice = createSlice({
         todo.description = action.payload.description;
         todo.notes = action.payload.notes;
         todo.priority = action.payload.priority;
+        todo.dateChanged = new Date().getDate(),
+        todo.isDone = action.payload.isDone;
       }
       const todos = { ...state.todos };
       state.todos = todos;
