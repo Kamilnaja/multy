@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Select } from "./select";
 import { deleteTodo, editTodo, toggleTodo } from "./store/todo-list.slice";
 
 interface TodoProps {
@@ -8,6 +9,7 @@ interface TodoProps {
 
 export default function Todo({ todo }: TodoProps) {
   const [content, setContent] = useState(todo.description);
+  const [priority, setPriority] = useState(todo.priority);
 
   const dispatch = useDispatch();
 
@@ -19,13 +21,14 @@ export default function Todo({ todo }: TodoProps) {
     dispatch(toggleTodo(todo));
   };
 
-  const onContentChangeFinish = (e: any) => {
+  const onContentChangeFinish = (e: React.FocusEvent<HTMLInputElement>) => {
+    console.log(priority)
     const todo: Todo = {
       description: content,
       dateChanged: new Date().getTime(),
       id: e.target.dataset.id,
       isDone: false,
-      priority: e.target.dataset.priority
+      priority
     };
     dispatch(editTodo(todo));
   };
@@ -44,10 +47,10 @@ export default function Todo({ todo }: TodoProps) {
       key={todo.id}
       draggable>
       <span className="flex-grow grow-0 pr-2 flex-shrink-0">
-        {todo.priority}
+        {Select({ priority: todo.priority, setPriority })}
       </span>
       <input
-        className="flex-grow flex-shrink-0"
+        className="flex-grow flex-shrink-0 pt-2 pb-2 pl-2 mr-4"
         onChange={(e) => setContent(e.target.value)}
         onBlur={(e) => onContentChangeFinish(e)}
         value={content}
@@ -56,7 +59,6 @@ export default function Todo({ todo }: TodoProps) {
         data-id={todo.id}
         data-priority={todo.priority}
       />
-
       {!todo.isDone && (
         <>
           <button

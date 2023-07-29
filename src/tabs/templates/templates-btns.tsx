@@ -5,6 +5,7 @@ import { deleteTemplate, type Template } from "./store/templates.slice";
 
 type TemplateBtnsProps = {
   template: Template;
+  setShow
 };
 
 export default function TemplatesBtns({ template }: TemplateBtnsProps) {
@@ -28,12 +29,18 @@ export default function TemplatesBtns({ template }: TemplateBtnsProps) {
     });
   };
 
+  const edit = () => {
+    setShowModal(true);
+  };
+
   return (
     <div className="flex justify-end absolute right-0">
       <button className="pr-2" onClick={handleAddToTodos}>
         Add to todos
       </button>
-      <button className="pr-2">Edit</button>
+      <button className="pr-2" onClick={edit}>
+        Edit
+      </button>
       <button className="" onClick={handleDelete}>
         Delete
       </button>
