@@ -47,7 +47,7 @@ export default function Todo({ todo }: TodoProps) {
         {todo.priority}
       </span>
       <input
-        className="flex-grow flex-shrink-0"
+        className="flex-grow flex-shrink-0 pr-2 pl-2 pt-2 pb-2 mr-20"
         onChange={(e) => setContent(e.target.value)}
         onBlur={(e) => onContentChangeFinish(e)}
         value={content}
@@ -67,11 +67,13 @@ export default function Todo({ todo }: TodoProps) {
         </>
       )}
       <button
-        className="cursor-pointer bg-transparent hover:bg-blue-700 text-blue-500 hover:text-white font-bold py-1 px-4 rounded border border-blue-500"
+        className="cursor-pointer bg-transparent hover:bg-blue-700 
+        text-blue-500 
+        hover:text-white font-bold py-1 px-4 rounded border border-blue-500"
         onClick={onDoneClicked}>
         {todo.isDone ? "Undone" : "Done"}
       </button>
-      <span>{todo.dateFinished}</span>
+      <span className="pl-2">{todo.dateFinished}</span>
     </li>
   );
 }
