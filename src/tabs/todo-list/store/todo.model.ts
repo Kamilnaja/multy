@@ -7,3 +7,7 @@ interface Todo {
   dateChanged: number;
   dateFinished?: number;
 }
+
+interface TodoSubtasks extends Todo {
+  todos?: Todo[];
+}

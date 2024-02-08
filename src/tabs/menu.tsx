@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   return (
@@ -8,6 +8,13 @@ export default function Menu() {
           Home
         </Link>
         <ul className="flex space-x-4">
+          <li>
+            <Link
+              to="/"
+              className="hover:text-gray-300 transition-colors duration-300">
+              Todo List
+            </Link>
+          </li>
           <li>
             <Link
               to="/templates"
@@ -32,5 +39,5 @@ export default function Menu() {
         </ul>
       </div>
     </nav>
-  )
+  );
 }
